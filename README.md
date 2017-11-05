@@ -1,9 +1,9 @@
-# React-Static - Styled-Components Example
+# React-Static - Glamorous Example
 
 This example includes:
-- Styled-Components
+- Glamorous
 - Image imports
 - File imports
 - Automatic Routing
 
-To get started, run `react-static create` and use the `styled-components` template.
+To get started, run `react-static create` and use the `glamorous` template.

@@ -1,11 +1,9 @@
+/* eslint-disable react/no-danger */
 import axios from 'axios'
 import React, { Component } from 'react'
-import { ServerStyleSheet } from 'styled-components'
+import { renderStaticOptimized } from 'glamor/server'
 
 export default {
-  getSiteProps: () => ({
-    title: 'React Static',
-  }),
   getRoutes: async () => {
     const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
     return [
@@ -37,13 +35,13 @@ export default {
       },
     ]
   },
-  renderToHtml: (render, Comp, meta) => {
-    const sheet = new ServerStyleSheet()
-    const html = render(sheet.collectStyles(<Comp />))
-    meta.styleTags = sheet.getStyleElement()
+  renderToHtml: async (render, Comp, meta) => {
+    const html = render(<Comp />)
+    const { css } = renderStaticOptimized(() => html)
+    meta.glamStyles = css
     return html
   },
-  Document: class CustomHtml extends Component {
+  Document: class CustomDocument extends Component {
     render () {
       const { Html, Head, Body, children, renderMeta } = this.props
 
@@ -52,9 +50,11 @@ export default {
           <Head>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            {renderMeta.styleTags}
+            <style dangerouslySetInnerHTML={{ __html: renderMeta.glamStyles }} />
           </Head>
-          <Body>{children}</Body>
+          <Body>
+            {children}
+          </Body>
         </Html>
       )
     }
