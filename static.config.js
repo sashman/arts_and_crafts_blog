@@ -2,32 +2,27 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { renderStaticOptimized } from 'glamor/server'
+import secrets from './secrets'
+
+// import createClient directly
+import {createClient} from 'contentful'
+const client = createClient(secrets.contentful)
 
 export default {
   getRoutes: async () => {
     const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    
     return [
       {
         path: '/',
         component: 'src/containers/Home',
+        getProps: () => ({
+          test,
+        }),
       },
       {
         path: '/about',
         component: 'src/containers/About',
-      },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getProps: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getProps: () => ({
-            post,
-          }),
-        })),
       },
       {
         is404: true,

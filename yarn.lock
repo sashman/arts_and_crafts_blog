@@ -309,6 +309,13 @@ axios@^0.16.2:
     follow-redirects "^1.2.3"
     is-buffer "^1.1.5"
 
+"axios@https://github.com/contentful/axios/archive/fix/https-via-http-proxy.tar.gz":
+  version "0.17.0"
+  resolved "https://github.com/contentful/axios/archive/fix/https-via-http-proxy.tar.gz#76fe9fcbb0e5907608bf2fa55d01846493474f48"
+  dependencies:
+    follow-redirects "^1.2.3"
+    is-buffer "^1.1.5"
+
 axobject-query@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-0.1.0.tgz#62f59dbc59c9f9242759ca349960e7a2fe3c36c0"
@@ -1637,6 +1644,22 @@ content-disposition@0.5.2:
 content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
+
+contentful-sdk-core@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-5.0.0.tgz#135301f6b0b520e62b6d25db32af0690fbd01abd"
+  dependencies:
+    lodash "^4.17.4"
+    qs "^6.5.1"
+
+contentful@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-5.0.2.tgz#c9c1cdb800b4f82e4dccf98425285b6d8654a90b"
+  dependencies:
+    axios "https://github.com/contentful/axios/archive/fix/https-via-http-proxy.tar.gz"
+    contentful-sdk-core "^5.0.0"
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.4"
 
 convert-source-map@^1.5.0:
   version "1.5.0"
@@ -3725,7 +3748,7 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -4967,7 +4990,7 @@ q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qs@6.5.1:
+qs@6.5.1, qs@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
