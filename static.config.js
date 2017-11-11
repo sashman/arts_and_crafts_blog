@@ -10,14 +10,23 @@ const client = createClient(secrets.contentful)
 
 export default {
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    
+
+    const homePages = await client.getEntries({
+      'content_type': 'home'
+    })
+
+    const homePageContent = homePages.items[0].fields
+    // console.log(JSON.stringify(homePageContent, ' ', 2))
+    const title = homePageContent.title
+    const subTitle = homePageContent.subTitle
+    const backgroundImageUrl = homePageContent.backgroundImage.fields.file.url
+
     return [
       {
         path: '/',
         component: 'src/containers/Home',
         getProps: () => ({
-          test,
+          title, subTitle, backgroundImageUrl
         }),
       },
       {
