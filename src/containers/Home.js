@@ -14,7 +14,7 @@ const Background = glamorous.div( ({backgroundImageUrl}) => ({
 
 export default getRouteProps(({ title, subTitle, backgroundImageUrl }) => (
   <Background backgroundImageUrl = {backgroundImageUrl}>
-    <h1 style={{ textAlign: 'center', 'margin-top': '20px' }}>{title}</h1>
+    <h1 style={{ textAlign: 'center', 'margin-top': '0px' }}>{title}</h1>
     <h2 style={{ textAlign: 'center' }}>{subTitle}</h2>
   </Background>
 ))
