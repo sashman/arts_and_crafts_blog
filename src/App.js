@@ -28,7 +28,7 @@ const AppStyles = glamorous.div({
     },
   },
   '& .content': {
-    padding: '1rem',
+    padding: '0',
   },
 })
 

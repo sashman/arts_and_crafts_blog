@@ -6,10 +6,15 @@ const LogoImage = glamorous.img({
   maxWidth: '100%',
 })
 
+const Background = glamorous.div( ({backgroundImageUrl}) => ({
+  width: "100%",
+  height: "1152px",
+  backgroundImage: "url(" + backgroundImageUrl + ")"
+}))
+
 export default getRouteProps(({ title, subTitle, backgroundImageUrl }) => (
-  <div>
-    <h1 style={{ textAlign: 'center' }}>{title}</h1>
+  <Background backgroundImageUrl = {backgroundImageUrl}>
+    <h1 style={{ textAlign: 'center', 'margin-top': '20px' }}>{title}</h1>
     <h2 style={{ textAlign: 'center' }}>{subTitle}</h2>
-    <LogoImage src={backgroundImageUrl} alt="" />
-  </div>
+  </Background>
 ))
