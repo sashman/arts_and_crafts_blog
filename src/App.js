@@ -35,10 +35,6 @@ const AppStyles = glamorous.div({
 export default () => (
   <Router>
     <AppStyles>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
       <div className="content">
         <Routes />
       </div>
