@@ -36,14 +36,14 @@ const Grid = glamorous.div({
     `,
   },
 
-});
+})
 
 const SideMenu = glamorous.div({
   'gridArea': 'side-menu',
-  'fontSize': '3vmax;',
+  'fontSize': '3vmax',
   'color': '#FFFFFF ',
   'height': "50vh",
-});
+})
 
 
 const Title = glamorous.h1({
@@ -51,7 +51,7 @@ const Title = glamorous.h1({
   'marginBottom': '0px',
   'paddingRight': '15vw',
   'fontFamily': "'Pacifico', cursive",
-  'fontSize': '4.7vmax;',
+  'fontSize': '4.7vmax',
   'color': '#2C2422',
   'textShadow': '4px 1px 4px #FFFFFF',
   'gridArea': 'title',
@@ -62,7 +62,7 @@ const SubTitle = glamorous.h2({
   'marginBottom': '0px',
   'paddingRight': '15vw',
   'fontFamily': "'Pacifico', cursive",
-  'fontSize': '4.7vmax;',
+  'fontSize': '4.7vmax',
   'color': '#0f1e3e',
   'textShadow': '4px 1px 4px #FFFFFF',
   'gridArea': 'sub-title',
