@@ -11,7 +11,8 @@ const Background = glamorous.div( ({backgroundImageUrl}) => ({
 const Grid = glamorous.div({
 
   'marginTop': '0px',
-  '@media (min-width: 700px)': {
+  'paddingTop': '50px',
+  '@media screen and (orientation : landscape)': {
     '@supports (display: grid)': {
       'gridTemplateRows': 'auto',
       display: 'grid',
@@ -24,7 +25,6 @@ const Grid = glamorous.div({
     },
   },
 
-  'paddingTop': '50px',
   '@supports (display: grid)': {
     'gridTemplateRows': 'auto',
     display: 'grid',
