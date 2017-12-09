@@ -16,17 +16,24 @@ export default {
     })
 
     const homePageContent = homePages.items[0].fields
-    // console.log(JSON.stringify(homePageContent, ' ', 2))
     const title = homePageContent.title
     const subTitle = homePageContent.subTitle
     const backgroundImageUrl = homePageContent.backgroundImage.fields.file.url
+
+    const postPages = await client.getEntries({
+      'content_type': '2wKn6yEnZewu2SCCkus4as'
+    })
+
+    const postTitles = postPages.items.map(postPage => ({title: postPage.fields.title, slug: postPage.fields.slug}))
+
+    console.log(JSON.stringify(postTitles, ' ', 2))
 
     return [
       {
         path: '/',
         component: 'src/containers/Home',
         getProps: () => ({
-          title, subTitle, backgroundImageUrl
+          title, subTitle, backgroundImageUrl, postTitles
         }),
       },
       {

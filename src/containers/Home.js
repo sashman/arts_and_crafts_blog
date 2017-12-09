@@ -18,9 +18,9 @@ const Grid = glamorous.div({
       display: 'grid',
       gridGap: 5,
       gridTemplateAreas: `
-      ". title ."
-      "side-menu side-menu ."
-      ". sub-title ."
+      "title ."
+      ". ."
+      "sub-title ."
       `,
     },
   },
@@ -32,24 +32,49 @@ const Grid = glamorous.div({
     gridTemplateAreas: `
     "title"
     "sub-title"
-    "side-menu"
+    "."
     `,
-  },
-
+  }
 })
 
 const SideMenu = glamorous.div({
   'gridArea': 'side-menu',
   'fontSize': '3vmax',
   'color': '#FFFFFF ',
-  'height': "50vh",
+  'position': 'fixed',
+  'top': '0',
+  'bottom': '0',
+  'left': '0',
+  'display':'flex',
+  'flex-direction':'column',
+  'justify-content':'center',
+  'overflow':'auto',
+
+  // 'height': "50vh",
 })
 
+const PostList = glamorous.ul({
+  'listStyleType': 'none',
+  'margin': '0',
+  'padding': '0'
+})
+
+const PostListItem = glamorous.li({
+  'backgroundColor': 'black',
+})
+
+const PostLink = glamorous.a({
+  'fontFamily': "'Open Sans', sans-serif",
+  'fontSize': '4vmax',
+  'color': 'white',
+  // 'padding': '1vmax'
+})
 
 const Title = glamorous.h1({
   'marginTop': '0px',
-  'marginBottom': '0px',
-  'paddingRight': '15vw',
+  '@media screen and (orientation : landscape)': {
+    'marginBottom': '50vh',
+  },
   'fontFamily': "'Pacifico', cursive",
   'fontSize': '4.7vmax',
   'color': '#2C2422',
@@ -57,10 +82,10 @@ const Title = glamorous.h1({
   'gridArea': 'title',
   'justifySelf': 'right'
 })
+
 const SubTitle = glamorous.h2({
   'marginTop': '0px',
   'marginBottom': '0px',
-  'paddingRight': '15vw',
   'fontFamily': "'Pacifico', cursive",
   'fontSize': '4.7vmax',
   'color': '#0f1e3e',
@@ -69,14 +94,20 @@ const SubTitle = glamorous.h2({
   'justifySelf': 'right'
 })
 
-export default getRouteProps(({ title, subTitle, backgroundImageUrl }) => (
+export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles }) => (
   <Background backgroundImageUrl = {backgroundImageUrl}>
-    <Grid>
+
       <Title>{title}</Title>
       <SubTitle>{subTitle}</SubTitle>
       <SideMenu>
-        
+        <PostList>
+          {postTitles.map(({title, slug}) => (
+            <PostListItem>
+              <PostLink>{title}</PostLink>
+            </PostListItem>
+          ))}
+        </PostList>
       </SideMenu>
-    </Grid>
+
   </Background>
 ))

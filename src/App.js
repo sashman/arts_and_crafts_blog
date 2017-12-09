@@ -13,11 +13,6 @@ const AppStyles = glamorous.div({
   fontSize: '16px',
   margin: '0',
   padding: '0',
-  '& a': {
-    textDecoration: 'none',
-    color: '#108db8',
-    fontWeight: 'bold',
-  },
   '& nav': {
     width: '100%',
     background: '#108db8',
