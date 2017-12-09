@@ -13,7 +13,7 @@ const Grid = glamorous.div({
   'marginTop': '0px',
   '@media (min-width: 700px)': {
     '@supports (display: grid)': {
-      'grid-template-rows': 'auto',
+      'gridTemplateRows': 'auto',
       display: 'grid',
       gridGap: 5,
       gridTemplateAreas: `
@@ -26,7 +26,7 @@ const Grid = glamorous.div({
 
   'paddingTop': '50px',
   '@supports (display: grid)': {
-    'grid-template-rows': 'auto',
+    'gridTemplateRows': 'auto',
     display: 'grid',
     gridGap: 5,
     gridTemplateAreas: `
