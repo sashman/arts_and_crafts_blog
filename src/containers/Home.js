@@ -75,15 +75,7 @@ export default getRouteProps(({ title, subTitle, backgroundImageUrl }) => (
       <Title>{title}</Title>
       <SubTitle>{subTitle}</SubTitle>
       <SideMenu>
-        <ul>
-          <li>Menu</li>
-          <li>Menu</li>
-          <li>Menu</li>
-          <li>Menu</li>
-          <li>Menu</li>
-          <li>Menu</li>
-          <li>Menu</li>
-        </ul>
+        
       </SideMenu>
     </Grid>
   </Background>
