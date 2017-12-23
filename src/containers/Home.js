@@ -48,8 +48,8 @@ const SideMenu = glamorous.div({
   'bottom': '0',
   'left': '0',
   'display': 'flex',
-  'flex-direction': 'column',
-  'justify-content': 'center',
+  'flexDirection': 'column',
+  'justifyContent': 'center',
   'overflow': 'auto'
 })
 
@@ -84,7 +84,7 @@ export default getRouteProps(({title, subTitle, backgroundImageUrl, postTitles})
   <SideMenu>
     <PostList>
       {
-        postTitles.map(({title, slug}) => (<PostListItem>
+        postTitles.map(({title, slug}) => (<PostListItem key={slug}>
           <PostLink>{title}</PostLink>
         </PostListItem>))
       }
