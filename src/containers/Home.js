@@ -14,7 +14,7 @@ const fontShadow = `-2px 0 ${whiteColour}, 0 2px ${whiteColour}, 2px 0 ${whiteCo
 const Background = glamorous.div(({backgroundImageUrl}) => ({
   width: "100%",
   height: "100vh",
-  background: "url(" + backgroundImageUrl + ") center/cover"
+  background: "url(" + backgroundImageUrl + ") right/cover"
 }))
 
 const BackgroundOverlay = glamorous.div({width: "100%", height: "100%", 'background': `linear-gradient(to right, ${blueColour} 64%, rgba(0,0,0,0))`})
@@ -25,7 +25,7 @@ const Overlay = glamorous.div({
   left: '0',
   right: '0',
   bottom: '0',
-  background: 'black',
+  background: darkBlueColour,
   opacity: '0.3'
 })
 
@@ -35,7 +35,6 @@ const ContentWrap = glamorous.div({
   'left': '200px',
   'right': '200px',
   'maxWidth': '100%',
-  'padding': '50px 200px 50px',
   'textAlign': 'centre'
 })
 
@@ -53,7 +52,12 @@ const SideMenu = glamorous.div({
   'overflow': 'auto'
 })
 
-const PostList = glamorous.ul({'listStyleType': 'none', 'margin': '0', 'padding': '0', 'fontSize': '1.5em', 'width': '200px'})
+const PostList = glamorous.ul({
+  'listStyleType': 'none',
+  'margin': '0',
+  'padding': '0',
+  'width': '200px'
+})
 
 const PostListItem = glamorous.li({'backgroundColor': 'rgba(0,0,0,0.3)'})
 
@@ -62,6 +66,9 @@ const PostLink = glamorous.a({'fontFamily': "'Open Sans', sans-serif", 'display'
 const Title = glamorous.h1({
   'margin': '0px',
   'fontFamily': fontFamily,
+  '@media (max-width: 700px)': {
+    'fontSize': '2em'
+  },
   'fontSize': '5em',
   'color': darkBlueColour,
   'textShadow': fontShadow,
@@ -74,13 +81,17 @@ const SubTitle = glamorous.h2({
   'marginLeft': 'auto',
   'marginRight': 'auto',
   'fontFamily': fontFamily,
+  '@media (max-width: 700px)': {
+    'fontSize': '2em'
+  },
   'fontSize': '5em',
   'color': darkBlueColour,
   'textShadow': fontShadow,
   'horizontalAlign': 'middle'
 })
 
-export default getRouteProps(({title, subTitle, backgroundImageUrl, postTitles}) => (<div>
+export default getRouteProps(({title, subTitle, backgroundImageUrl, postTitles}) => (
+<div>
   <SideMenu>
     <PostList>
       {
