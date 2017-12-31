@@ -32,10 +32,12 @@ const Overlay = glamorous.div({
 const ContentWrap = glamorous.div({
   'position': 'absolute',
   'top': '0',
+  '@media (max-width: 970px)': {
+    'left': '0',
+    'right': '0',
+  },
   'left': '200px',
-  'right': '200px',
-  'maxWidth': '100%',
-  'textAlign': 'centre'
+  'maxWidth': '100%'
 })
 
 const SideMenu = glamorous.div({
@@ -45,6 +47,10 @@ const SideMenu = glamorous.div({
   'position': 'fixed',
   'top': '0',
   'bottom': '0',
+  '@media (max-width: 970px)': {
+    'display': 'fixed',
+    'left': '-200px'
+  },
   'left': '0',
   'display': 'flex',
   'flexDirection': 'column',
@@ -66,7 +72,7 @@ const PostLink = glamorous.a({'fontFamily': "'Open Sans', sans-serif", 'display'
 const Title = glamorous.h1({
   'margin': '0px',
   'fontFamily': fontFamily,
-  '@media (max-width: 700px)': {
+  '@media (max-width: 970px)': {
     'fontSize': '2em'
   },
   'fontSize': '5em',
@@ -81,7 +87,7 @@ const SubTitle = glamorous.h2({
   'marginLeft': 'auto',
   'marginRight': 'auto',
   'fontFamily': fontFamily,
-  '@media (max-width: 700px)': {
+  '@media (max-width: 970px)': {
     'fontSize': '2em'
   },
   'fontSize': '5em',
