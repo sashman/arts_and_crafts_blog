@@ -11,6 +11,17 @@ const blueColour = '#0A142B'
 const fontFamily = "'Pacifico', cursive"
 const fontShadow = `-2px 0 ${whiteColour}, 0 2px ${whiteColour}, 2px 0 ${whiteColour}, 0 -2px ${whiteColour}`
 
+const mediaQueries = {
+	phone: {
+    landscape: '@media (min-width : 415px)',
+    portrait: '@media (max-width : 414px)',
+  },
+  tablet: {
+    landscape: '@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)',
+    portrait: '@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)',
+  },
+}
+
 const Background = glamorous.div(({backgroundImageUrl}) => ({
   width: "100%",
   height: "100vh",
@@ -32,7 +43,7 @@ const Overlay = glamorous.div({
 const ContentWrap = glamorous.div({
   'position': 'absolute',
   'top': '0',
-  '@media (max-width: 970px)': {
+  [mediaQueries.phone.portrait]: {
     'left': '0',
     'right': '0',
   },
@@ -72,7 +83,7 @@ const PostLink = glamorous.a({'fontFamily': "'Open Sans', sans-serif", 'display'
 const Title = glamorous.h1({
   'margin': '0px',
   'fontFamily': fontFamily,
-  '@media (max-width: 970px)': {
+  [mediaQueries.phone.portrait]: {
     'fontSize': '2em'
   },
   'fontSize': '5em',
@@ -87,7 +98,7 @@ const SubTitle = glamorous.h2({
   'marginLeft': 'auto',
   'marginRight': 'auto',
   'fontFamily': fontFamily,
-  '@media (max-width: 970px)': {
+  [mediaQueries.phone.portrait]: {
     'fontSize': '2em'
   },
   'fontSize': '5em',
