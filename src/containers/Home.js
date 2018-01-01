@@ -1,6 +1,7 @@
 import React from 'react'
 import {getSiteProps, getRouteProps} from 'react-static'
 import glamorous from 'glamorous'
+import mediaQueries from '../mediaQueries'
 
 const goldColour = '#C19B53'
 const blackColour = 'black'
@@ -10,17 +11,6 @@ const blueColour = '#0A142B'
 
 const fontFamily = "'Pacifico', cursive"
 const fontShadow = `-2px 0 ${whiteColour}, 0 2px ${whiteColour}, 2px 0 ${whiteColour}, 0 -2px ${whiteColour}`
-
-const mediaQueries = {
-	phone: {
-    landscape: '@media (min-width : 415px)',
-    portrait: '@media (max-width : 414px)',
-  },
-  tablet: {
-    landscape: '@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)',
-    portrait: '@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)',
-  },
-}
 
 const Background = glamorous.div(({backgroundImageUrl}) => ({
   width: "100%",
@@ -58,7 +48,7 @@ const SideMenu = glamorous.div({
   'position': 'fixed',
   'top': '0',
   'bottom': '0',
-  '@media (max-width: 970px)': {
+  [mediaQueries.phone.portrait]: {
     'display': 'fixed',
     'left': '-200px'
   },
