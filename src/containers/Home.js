@@ -35,11 +35,13 @@ const ContentWrap = glamorous.div({
   'top': '0',
   [mediaQueries.phone.portrait]: {
     'left': '0',
-    'right': '0',
+    'right': '0'
   },
   'left': '200px',
   'maxWidth': '100%'
 })
+
+const Nav = glamorous.nav({})
 
 const SideMenu = glamorous.div({
   'zIndex': '100',
@@ -59,12 +61,7 @@ const SideMenu = glamorous.div({
   'overflow': 'auto'
 })
 
-const PostList = glamorous.ul({
-  'listStyleType': 'none',
-  'margin': '0',
-  'padding': '0',
-  'width': '200px'
-})
+const PostList = glamorous.ul({'listStyleType': 'none', 'margin': '0', 'padding': '0', 'width': '200px'})
 
 const PostListItem = glamorous.li({'backgroundColor': 'rgba(0,0,0,0.3)'})
 
@@ -99,16 +96,18 @@ const SubTitle = glamorous.h2({
 
 export default getRouteProps(({title, subTitle, backgroundImageUrl, postTitles}) => (
 <div>
-  <SideMenu>
-    <PostList>
-      {
-        postTitles.map(({title, slug}) => (<PostListItem key={slug}>
-          <PostLink>{title}</PostLink>
-        </PostListItem>))
-      }
-    </PostList>
-  </SideMenu>
-
+  <Nav>
+	<button>=</button>
+    <SideMenu>
+      <PostList>
+        {
+          postTitles.map(({title, slug}) => (<PostListItem key={slug}>
+            <PostLink>{title}</PostLink>
+          </PostListItem>))
+        }
+      </PostList>
+    </SideMenu>
+  </Nav>
   <Background backgroundImageUrl={backgroundImageUrl}>
     <Overlay></Overlay>
     <BackgroundOverlay>
