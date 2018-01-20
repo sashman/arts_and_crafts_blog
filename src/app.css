@@ -7,4 +7,10 @@ body {
   padding: 0;
 }
 
+@keyframes ckw {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @import url('https://fonts.googleapis.com/css?family=Pacifico');

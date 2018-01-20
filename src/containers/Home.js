@@ -1,4 +1,5 @@
 import React from 'react'
+import { Polyline } from 'react-shapes'
 import { getRouteProps } from 'react-static'
 import glamorous from 'glamorous'
 import mediaQueries from '../mediaQueries'
@@ -76,6 +77,28 @@ const SubTitle = glamorous.h2({
   horizontalAlign: 'middle',
 })
 
+const points = (xOffset, yOffset) => {
+  const pointList = [...Array(350).keys()].map(i => {
+    const resolution = 25
+    const maxRadius = 700
+    const resolution2 = resolution / 1.49999999925
+    const radius = maxRadius * Math.cos(i / resolution2)
+    const y = Math.cos(i / resolution + 10) * radius + yOffset
+    const x = Math.sin(i / resolution + 10) * radius + xOffset
+    return `${x},${y}`
+  })
+
+  return pointList.join(' ')
+}
+
+const Pattern = glamorous(Polyline)({
+  // transform: 'rotate(180deg)',
+  animation: 'ckw 60s linear infinite',
+  // animationDuration: '20s',
+  width: 'auto',
+  transformOrigin: '50% 50%',
+})
+
 export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles }) => (
   <div>
     <Background backgroundImageUrl={backgroundImageUrl}>
@@ -86,6 +109,12 @@ export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles 
           <Title>{title}</Title>
           <SubTitle>{subTitle}</SubTitle>
         </ContentWrap>
+        <Pattern
+          points={points(20, 700)}
+          fill={{ color: 'none' }}
+          stroke={{ color: 'rgba(255,255,255,0.2)' }}
+          strokeWidth={20}
+        />
       </BackgroundOverlay>
     </Background>
   </div>

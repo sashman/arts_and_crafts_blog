@@ -10,7 +10,6 @@ const Nav = glamorous.nav({ backgroundColor: 'rgba(0,0,0,0)', height: '40px', wi
 const SideMenu = glamorous.div(
   {
     zIndex: '50',
-    gridArea: 'side-menu',
     color: '#FFFFFF',
     position: 'fixed',
     top: '0',
@@ -24,6 +23,7 @@ const SideMenu = glamorous.div(
   ({ children: { props } }) => ({
     [mediaQueries.phone.portrait]: {
       display: 'fixed',
+      top: '-500px',
       left: props.hidePostList ? `-${sideListWidth}` : '0',
     },
   }),
