@@ -3,8 +3,8 @@ import { getRouteProps } from 'react-static'
 import glamorous from 'glamorous'
 import mediaQueries from '../mediaQueries'
 
-const goldColour = '#C19B53'
-const blackColour = 'black'
+// const goldColour = '#C19B53'
+// const blackColour = 'black'
 const whiteColour = 'white'
 const darkBlueColour = '#0D0D16'
 const blueColour = '#0A142B'
@@ -50,7 +50,7 @@ const Nav = glamorous.nav({
 const SideMenu = glamorous.div({
   zIndex: '100',
   gridArea: 'side-menu',
-  color: '#FFFFFF ',
+  color: '#FFFFFF',
   position: 'fixed',
   top: '0',
   bottom: '0',
@@ -71,11 +71,26 @@ const PostListItem = glamorous.li({ backgroundColor: 'rgba(0,0,0,0.3)' })
 
 const PostLink = glamorous.a({ fontFamily: "'Open Sans', sans-serif", display: 'inline-block', color: 'white', padding: '5px 15px' })
 
+const BugerButton = glamorous.button({
+  backgroundColor: 'rgba(0,0,0,0)',
+  paddingLeft: '.3em',
+  color: whiteColour,
+  fontSize: '3em',
+  border: 'none',
+  position: 'fixed',
+  left: '-200px',
+  [mediaQueries.phone.portrait]: {
+    left: '0px',
+  },
+})
+
 const Title = glamorous.h1({
   margin: '0px',
   fontFamily,
   [mediaQueries.phone.portrait]: {
     fontSize: '2em',
+    paddingTop: '2em',
+    paddingLeft: '1em',
   },
   fontSize: '5em',
   color: darkBlueColour,
@@ -91,6 +106,7 @@ const SubTitle = glamorous.h2({
   fontFamily,
   [mediaQueries.phone.portrait]: {
     fontSize: '2em',
+    paddingLeft: '1em',
   },
   fontSize: '5em',
   color: darkBlueColour,
@@ -104,7 +120,7 @@ export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles 
       <Overlay />
       <BackgroundOverlay>
         <Nav>
-          <button>=</button>
+          <BugerButton>=</BugerButton>
           <SideMenu>
             <PostList>
               {
