@@ -14,10 +14,6 @@ const SideMenu = glamorous.div(
     position: 'fixed',
     top: '0',
     bottom: '0',
-    [mediaQueries.phone.portrait]: {
-      display: 'fixed',
-      left: '-200px',
-    },
     left: '0',
     display: 'flex',
     flexDirection: 'column',
@@ -27,7 +23,7 @@ const SideMenu = glamorous.div(
   props => ({
     [mediaQueries.phone.portrait]: {
       display: 'fixed',
-      left: props.hidden ? '-200px' : '0px',
+      left: props.hidePostList ? '-200px' : '0px',
     },
   }),
 )
@@ -60,18 +56,18 @@ const BugerButton = glamorous.button({
 
 export default class NavWrap extends React.Component {
   state = {
-    hidden: true,
+    hidePostList: true,
   }
   handleClick = e => {
     e.preventDefault()
-    this.setState({ hidden: !this.state.hidden })
+    this.setState({ hidePostList: !this.state.hidePostList })
   }
   render () {
     return (
       <Nav>
         <BugerButton onClick={this.handleClick}>=</BugerButton>
         <SideMenu>
-          <PostList hidden={this.state.hidden}>
+          <PostList hidePostList={this.state.hidePostList}>
             {this.props.postTitles.map(({ title, slug }) => (
               <PostListItem key={slug}>
                 <PostLink>{title}</PostLink>
