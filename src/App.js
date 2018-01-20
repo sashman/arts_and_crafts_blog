@@ -1,7 +1,6 @@
 import React from 'react'
-import { Router, Link } from 'react-static'
+import { Router } from 'react-static'
 import glamorous from 'glamorous'
-//
 import Routes from 'react-static-routes'
 
 import './app.css'

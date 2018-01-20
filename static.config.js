@@ -1,18 +1,18 @@
 /* eslint-disable react/no-danger */
-import axios from 'axios'
 import React, { Component } from 'react'
 import { renderStaticOptimized } from 'glamor/server'
-import secrets from './secrets'
 
 // import createClient directly
-import {createClient} from 'contentful'
+import { createClient } from 'contentful'
+
+import secrets from './secrets'
+
 const client = createClient(secrets.contentful)
 
 export default {
   getRoutes: async () => {
-
     const homePages = await client.getEntries({
-      'content_type': 'home'
+      content_type: 'home',
     })
 
     const homePageContent = homePages.items[0].fields
@@ -21,10 +21,12 @@ export default {
     const backgroundImageUrl = homePageContent.backgroundImage.fields.file.url
 
     const postPages = await client.getEntries({
-      'content_type': '2wKn6yEnZewu2SCCkus4as'
+      content_type: '2wKn6yEnZewu2SCCkus4as',
     })
 
-    const postTitles = postPages.items.map(postPage => ({title: postPage.fields.title, slug: postPage.fields.slug}))
+    const postTitles = postPages.items.map(
+      postPage => ({ title: postPage.fields.title,
+        slug: postPage.fields.slug }))
 
     console.log(JSON.stringify(postTitles, ' ', 2))
 
@@ -33,7 +35,7 @@ export default {
         path: '/',
         component: 'src/containers/Home',
         getProps: () => ({
-          title, subTitle, backgroundImageUrl, postTitles
+          title, subTitle, backgroundImageUrl, postTitles,
         }),
       },
       {
