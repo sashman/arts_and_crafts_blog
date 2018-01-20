@@ -20,7 +20,7 @@ const SideMenu = glamorous.div(
     justifyContent: 'center',
     overflow: 'auto',
   },
-  props => ({
+  ({ children: { props } }) => ({
     [mediaQueries.phone.portrait]: {
       display: 'fixed',
       left: props.hidePostList ? '-200px' : '0px',
