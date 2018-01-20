@@ -92,9 +92,7 @@ const points = (xOffset, yOffset) => {
 }
 
 const Pattern = glamorous(Polyline)({
-  // transform: 'rotate(180deg)',
   animation: 'ckw 60s linear infinite',
-  // animationDuration: '20s',
   width: 'auto',
   transformOrigin: '50% 50%',
 })
