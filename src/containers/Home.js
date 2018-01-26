@@ -5,7 +5,7 @@ import glamorous from 'glamorous'
 import mediaQueries from '../mediaQueries'
 import NavWrap from '../components/NavWrap'
 
-// const goldColour = '#C19B53'
+const goldColour = '#C19B5388'
 // const blackColour = 'black'
 const whiteColour = 'white'
 const darkBlueColour = '#0D0D16'
@@ -17,13 +17,13 @@ const fontShadow = `-2px 0 ${whiteColour}, 0 2px ${whiteColour}, 2px 0 ${whiteCo
 const Background = glamorous.div(({ backgroundImageUrl }) => ({
   width: '100%',
   height: '100vh',
-  background: `url(${backgroundImageUrl}) right/cover`,
+  background: `url(${backgroundImageUrl}) right/cover`
 }))
 
 const BackgroundOverlay = glamorous.div({
   width: '100%',
   height: '100%',
-  background: `linear-gradient(to right, ${blueColour} 64%, rgba(0,0,0,0))`,
+  background: `linear-gradient(to right, ${blueColour} 64%, rgba(0,0,0,0))`
 })
 
 const Overlay = glamorous.div({
@@ -33,7 +33,7 @@ const Overlay = glamorous.div({
   right: '0',
   bottom: '0',
   background: darkBlueColour,
-  opacity: '0.3',
+  opacity: '0.3'
 })
 
 const ContentWrap = glamorous.div({
@@ -41,10 +41,10 @@ const ContentWrap = glamorous.div({
   top: '0',
   [mediaQueries.phone.portrait]: {
     left: '0',
-    right: '0',
+    right: '0'
   },
   left: '200px',
-  maxWidth: '100%',
+  maxWidth: '100%'
 })
 
 const Title = glamorous.h1({
@@ -53,12 +53,12 @@ const Title = glamorous.h1({
   [mediaQueries.phone.portrait]: {
     fontSize: '2em',
     paddingTop: '2em',
-    paddingLeft: '1em',
+    paddingLeft: '1em'
   },
   fontSize: '5em',
   color: darkBlueColour,
   textShadow: fontShadow,
-  horizontalAlign: 'middle',
+  horizontalAlign: 'middle'
 })
 
 const SubTitle = glamorous.h2({
@@ -69,17 +69,17 @@ const SubTitle = glamorous.h2({
   fontFamily,
   [mediaQueries.phone.portrait]: {
     fontSize: '2em',
-    paddingLeft: '1em',
+    paddingLeft: '1em'
   },
   fontSize: '5em',
   color: darkBlueColour,
   textShadow: fontShadow,
-  horizontalAlign: 'middle',
+  horizontalAlign: 'middle'
 })
 
 const points = (xOffset, yOffset) => {
-  const pointList = [...Array(350).keys()].map(i => {
-    const resolution = 25
+  const pointList = [...Array(300).keys()].map(i => {
+    const resolution = 20
     const maxRadius = 700
     const resolution2 = resolution / 1.49999999925
     const radius = maxRadius * Math.cos(i / resolution2)
@@ -94,7 +94,7 @@ const points = (xOffset, yOffset) => {
 const Pattern = glamorous(Polyline)({
   animation: 'ckw 60s linear infinite',
   width: 'auto',
-  transformOrigin: '50% 50%',
+  transformOrigin: '50% 50%'
 })
 
 export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles }) => (
@@ -110,7 +110,7 @@ export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles 
         <Pattern
           points={points(20, 700)}
           fill={{ color: 'none' }}
-          stroke={{ color: 'rgba(255,255,255,0.2)' }}
+          stroke={{ color: goldColour }}
           strokeWidth={20}
         />
       </BackgroundOverlay>
