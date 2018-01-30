@@ -12,7 +12,7 @@ const client = createClient(secrets.contentful)
 export default {
   getRoutes: async () => {
     const homePages = await client.getEntries({
-      content_type: 'home',
+      content_type: 'home'
     })
 
     const homePageContent = homePages.items[0].fields
@@ -21,31 +21,41 @@ export default {
     const backgroundImageUrl = homePageContent.backgroundImage.fields.file.url
 
     const postPages = await client.getEntries({
-      content_type: '2wKn6yEnZewu2SCCkus4as',
+      content_type: '2wKn6yEnZewu2SCCkus4as'
     })
 
-    const postTitles = postPages.items.map(
-      postPage => ({ title: postPage.fields.title,
-        slug: postPage.fields.slug }))
+    console.log(backgroundImageUrl)
 
-    console.log(JSON.stringify(postTitles, ' ', 2))
-
+    const postTitles = postPages.items.map(postPage => ({
+      title: postPage.fields.title,
+      slug: postPage.fields.slug
+    }))
     return [
       {
         path: '/',
         component: 'src/containers/Home',
         getProps: () => ({
-          title, subTitle, backgroundImageUrl, postTitles,
+          title,
+          subTitle,
+          backgroundImageUrl,
+          postTitles
         }),
+        children: postPages.items.map(postPage => ({
+          path: `/post/${postPage.fields.slug}`,
+          component: 'src/containers/Post',
+          getProps: () => ({
+            post: postPage.fields
+          })
+        }))
       },
       {
         path: '/about',
-        component: 'src/containers/About',
+        component: 'src/containers/About'
       },
       {
         is404: true,
-        component: 'src/containers/404',
-      },
+        component: 'src/containers/404'
+      }
     ]
   },
   renderToHtml: async (render, Comp, meta) => {
@@ -65,11 +75,9 @@ export default {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <style dangerouslySetInnerHTML={{ __html: renderMeta.glamStyles }} />
           </Head>
-          <Body>
-            {children}
-          </Body>
+          <Body>{children}</Body>
         </Html>
       )
     }
-  },
+  }
 }

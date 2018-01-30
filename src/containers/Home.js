@@ -3,26 +3,18 @@ import { Polyline } from 'react-shapes'
 import { getRouteProps } from 'react-static'
 import glamorous from 'glamorous'
 import mediaQueries from '../mediaQueries'
+import Background from '../components/Background'
 import NavWrap from '../components/NavWrap'
+import colours from '../colourScheme'
 
-const goldColour = '#C19B5388'
-// const blackColour = 'black'
-const whiteColour = 'white'
-const darkBlueColour = '#0D0D16'
-const blueColour = '#0A142B'
+const { goldColour, darkBlueColour, blueColour, fontShadow } = colours
 
 const fontFamily = "'Pacifico', cursive"
-const fontShadow = `-2px 0 ${whiteColour}, 0 2px ${whiteColour}, 2px 0 ${whiteColour}, 0 -2px ${whiteColour}`
-
-const Background = glamorous.div(({ backgroundImageUrl }) => ({
-  width: '100%',
-  height: '100vh',
-  background: `url(${backgroundImageUrl}) right/cover`
-}))
 
 const BackgroundOverlay = glamorous.div({
   width: '100%',
   height: '100%',
+  overflow: 'hidden',
   background: `linear-gradient(to right, ${blueColour} 64%, rgba(0,0,0,0))`
 })
 
@@ -92,9 +84,9 @@ const points = (xOffset, yOffset) => {
 }
 
 const Pattern = glamorous(Polyline)({
-  animation: 'ckw 60s linear infinite',
-  width: 'auto',
-  transformOrigin: '50% 50%'
+  // animation: 'ckw 60s linear infinite',
+  // width: 'auto',
+  // transformOrigin: '50% 50%'
 })
 
 export default getRouteProps(({ title, subTitle, backgroundImageUrl, postTitles }) => (

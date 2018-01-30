@@ -1,5 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
+import { Link } from 'react-static'
 import mediaQueries from '../mediaQueries'
 
 const whiteColour = 'white'
@@ -18,21 +19,21 @@ const SideMenu = glamorous.div(
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    overflow: 'auto',
+    overflow: 'auto'
   },
   ({ children: { props } }) => ({
     [mediaQueries.phone.portrait]: {
       display: 'fixed',
       top: '-500px',
-      left: props.hidePostList ? `-${sideListWidth}` : '0',
-    },
-  }),
+      left: props.hidePostList ? `-${sideListWidth}` : '0'
+    }
+  })
 )
 
 const PostList = glamorous.ul({
   listStyleType: 'none',
   margin: '0',
-  padding: '0',
+  padding: '0'
 })
 
 const PostListItem = glamorous.li({
@@ -41,11 +42,11 @@ const PostListItem = glamorous.li({
   paddingBottom: '2em',
   [mediaQueries.phone.portrait]: {
     paddingTop: '.5em',
-    paddingBottom: '.5em',
-  },
+    paddingBottom: '.5em'
+  }
 })
 
-const PostLink = glamorous.a({
+const PostLink = glamorous(Link)({
   fontFamily: "'Open Sans', sans-serif",
   display: 'inline-block',
   color: 'white',
@@ -54,10 +55,10 @@ const PostLink = glamorous.a({
   fontSize: '3em',
   textDecoration: 'none',
   ':hover': {
-    textDecoration: 'underline',
+    textDecoration: 'underline'
   },
   ':active': {
-    textDecoration: 'underline',
+    textDecoration: 'underline'
   },
   [mediaQueries.phone.portrait]: {
     width: sideListWidth,
@@ -65,9 +66,9 @@ const PostLink = glamorous.a({
     fontSize: '2em',
     ':active': {
       textDecoration: 'underline',
-      fontSize: '2.05em',
-    },
-  },
+      fontSize: '2.05em'
+    }
+  }
 })
 
 const BugerButton = glamorous.button({
@@ -81,13 +82,13 @@ const BugerButton = glamorous.button({
   border: 'none',
   outline: 'none',
   [mediaQueries.phone.portrait]: {
-    left: '0',
-  },
+    left: '0'
+  }
 })
 
 export default class NavWrap extends React.Component {
   state = {
-    hidePostList: true,
+    hidePostList: true
   }
   handleClick = e => {
     e.preventDefault()
@@ -101,7 +102,7 @@ export default class NavWrap extends React.Component {
           <PostList hidePostList={this.state.hidePostList}>
             {this.props.postTitles.map(({ title, slug }) => (
               <PostListItem key={slug}>
-                <PostLink href="#">{title}</PostLink>
+                <PostLink to={`/post/${slug}`}>{title}</PostLink>
               </PostListItem>
             ))}
           </PostList>
