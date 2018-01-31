@@ -11,41 +11,30 @@ const client = createClient(secrets.contentful)
 
 export default {
   getRoutes: async () => {
-    const homePages = await client.getEntries({
-      content_type: 'home'
-    })
+    const homePages = await client.getEntries({ content_type: 'home' })
 
     const homePageContent = homePages.items[0].fields
     const title = homePageContent.title
     const subTitle = homePageContent.subTitle
     const backgroundImageUrl = homePageContent.backgroundImage.fields.file.url
 
-    const postPages = await client.getEntries({
-      content_type: '2wKn6yEnZewu2SCCkus4as'
-    })
-
-    console.log(backgroundImageUrl)
+    const postPages = await client.getEntries({ content_type: '2wKn6yEnZewu2SCCkus4as' })
 
     const postTitles = postPages.items.map(postPage => ({
       title: postPage.fields.title,
-      slug: postPage.fields.slug
+      slug: postPage.fields.slug,
+      thumbnail: postPage.fields.featuredImage.fields.file.url
     }))
+
     return [
       {
         path: '/',
         component: 'src/containers/Home',
-        getProps: () => ({
-          title,
-          subTitle,
-          backgroundImageUrl,
-          postTitles
-        }),
+        getProps: () => ({ title, subTitle, backgroundImageUrl, postTitles }),
         children: postPages.items.map(postPage => ({
           path: `/post/${postPage.fields.slug}`,
           component: 'src/containers/Post',
-          getProps: () => ({
-            post: postPage.fields
-          })
+          getProps: () => ({ post: postPage.fields })
         }))
       },
       {
@@ -73,7 +62,11 @@ export default {
           <Head>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <style dangerouslySetInnerHTML={{ __html: renderMeta.glamStyles }} />
+            <style
+              dangerouslySetInnerHTML={{
+                __html: renderMeta.glamStyles
+              }}
+            />
           </Head>
           <Body>{children}</Body>
         </Html>

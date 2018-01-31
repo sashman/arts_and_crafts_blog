@@ -15,7 +15,7 @@ const BackgroundOverlay = glamorous.div({
   width: '100%',
   height: '100%',
   overflow: 'hidden',
-  background: `linear-gradient(to right, ${blueColour} 64%, rgba(0,0,0,0))`
+  background: `linear-gradient(to right, ${blueColour} 50%, rgba(0,0,0,0))`
 })
 
 const Overlay = glamorous.div({

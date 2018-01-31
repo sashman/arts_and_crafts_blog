@@ -2,9 +2,11 @@ import React from 'react'
 import glamorous from 'glamorous'
 import { Link } from 'react-static'
 import mediaQueries from '../mediaQueries'
+import colours from '../colourScheme'
 
 const whiteColour = 'white'
 const sideListWidth = '300px'
+const { fontShadowBlack } = colours
 
 const Nav = glamorous.nav({ backgroundColor: 'rgba(0,0,0,0)', height: '40px', width: 'auto' })
 
@@ -18,8 +20,7 @@ const SideMenu = glamorous.div(
     left: '0',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    overflow: 'auto'
+    justifyContent: 'center'
   },
   ({ children: { props } }) => ({
     [mediaQueries.phone.portrait]: {
@@ -37,29 +38,34 @@ const PostList = glamorous.ul({
 })
 
 const PostListItem = glamorous.li({
-  backgroundColor: 'rgba(0,0,0,0.3)',
-  paddingTop: '2em',
-  paddingBottom: '2em',
   [mediaQueries.phone.portrait]: {
     paddingTop: '.5em',
     paddingBottom: '.5em'
   }
 })
 
-const PostLink = glamorous(Link)({
-  fontFamily: "'Open Sans', sans-serif",
+const PostLink = glamorous(Link)(({ thumbnail }) => ({
+  fontFamily: "'Oswald', sans-serif",
   display: 'inline-block',
+  width: '100%',
   color: 'white',
-  paddingLeft: '.5em',
+  paddingLeft: '4.3em',
   paddingRight: '.5em',
+  paddingTop: '1em',
+  paddingBottom: '1em',
   fontSize: '3em',
   textDecoration: 'none',
   ':hover': {
-    textDecoration: 'underline'
+    background: `url(${thumbnail}) right/cover`,
+    textShadow: fontShadowBlack,
+    borderStyle: 'solid',
+    borderColor: 'white',
+    borderWidth: '2px'
   },
-  ':active': {
-    textDecoration: 'underline'
-  },
+  backgroundColor: 'rgba(0,0,0,0.3)',
+  '-webkit-transition': 'background 1s, text-shadow 1s',
+  transition: 'background 1s, text-shadow 1s',
+  'transition-timing-function': 'ease',
   [mediaQueries.phone.portrait]: {
     width: sideListWidth,
     paddingRight: '0',
@@ -69,7 +75,7 @@ const PostLink = glamorous(Link)({
       fontSize: '2.05em'
     }
   }
-})
+}))
 
 const BugerButton = glamorous.button({
   backgroundColor: 'rgba(0,0,0,0)',
@@ -100,9 +106,11 @@ export default class NavWrap extends React.Component {
         <BugerButton onClick={this.handleClick}>=</BugerButton>
         <SideMenu>
           <PostList hidePostList={this.state.hidePostList}>
-            {this.props.postTitles.map(({ title, slug }) => (
+            {this.props.postTitles.map(({ title, slug, thumbnail }) => (
               <PostListItem key={slug}>
-                <PostLink to={`/post/${slug}`}>{title}</PostLink>
+                <PostLink to={`/post/${slug}`} thumbnail={thumbnail}>
+                  {title}
+                </PostLink>
               </PostListItem>
             ))}
           </PostList>
